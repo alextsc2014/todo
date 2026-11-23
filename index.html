@@ -7,9 +7,9 @@
 <!-- Pixel font; falls back to monospace if offline -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
 <style>
-  /* Blue and white: dark mode = white on blue, light mode = blue on white */
-  :root { --bg: #0000ff; --fg: #fff; --grid: #ffffff14; color-scheme: dark; }
-  :root[data-theme=light] { --bg: #fff; --fg: #0000ff; --grid: #0000ff14; color-scheme: light; }
+  /* Strictly black and white: dark mode = white on black, light mode = black on white */
+  :root { --bg: #000; --fg: #fff; --grid: #ffffff14; color-scheme: dark; }
+  :root[data-theme=light] { --bg: #fff; --fg: #000; --grid: #00000014; color-scheme: light; }
 
   * { box-sizing: border-box; border-radius: 0; }
   body {
@@ -19,14 +19,14 @@
     margin: 0; padding: 24px 12px;
   }
   .app { max-width: 560px; margin: 0 auto; padding: 20px; background: var(--bg); border: 4px solid var(--fg); box-shadow: 8px 8px 0 var(--fg); }
-  .app { text-align: center; }
-  header { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 14px; margin-bottom: 18px; }
-  input[type=text], input[type=date], select { text-align: center; text-align-last: center; }
-  .controls { justify-content: center; }
+  .app { text-align: left; }
+  header { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+  input[type=text], input[type=date], select { text-align: left; text-align-last: left; }
+  .controls { justify-content: flex-start; }
   h1 { font-size: 22px; margin: 0; text-shadow: 3px 3px 0 var(--grid); }
   [hidden] { display: none !important; }
 
-  form, .fields { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  form, .fields { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-start; }
   form .task, .fields .task { flex: 1 1 100%; }
   input[type=text], input[type=date], select {
     font: inherit; color: var(--fg); background: var(--bg);
