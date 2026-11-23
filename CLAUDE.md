@@ -13,7 +13,7 @@ A deliberately minimal to-do app: plain HTML/CSS/JS, **no frameworks, no build s
 ## Architecture notes
 
 - **No persistence by design.** Tasks live in memory only; a refresh clears them. The user rejected localStorage for tasks. Only the dark/light theme choice is saved (localStorage, falling back to `prefers-color-scheme`).
-- **Style constraints:** pixel-art look (Press Start 2P Google font, monospace fallback), strictly black and white. Theming is via `--bg`/`--fg` CSS variables, with `:root[data-theme=light]` swapping them. Don't introduce other colours. Text is centred throughout.
+- **Style constraints:** pixel-art look (Press Start 2P Google font, monospace fallback), strictly blue (`#0000ff`) and white (dark mode = white on blue, light mode = blue on white). Theming is via `--bg`/`--fg` CSS variables, with `:root[data-theme=light]` swapping them. Don't introduce other colours. Text is centred throughout.
 - **Icons** (edit, trash, sun, moon) are 8x8 string grids in `ICONS`, rendered by `icon(name)` into SVG `<rect>`s with `crispEdges`.
 - **List model:** each task is an `<li>` built with DOM APIs and carrying state in `dataset` (`cat`, `due`, `seq`). `refreshView()` is the single place that applies sorting (by due date when the SORT box is on; undated tasks last; ties by insertion `seq`) and the category filter (via `li.hidden`). Call it after any change to tasks. `li` is `display:flex`, so `[hidden]{display:none !important}` is required for filtering to work.
 - **Inline edit:** the edit button swaps the text and meta for a `.fields` group (text, category select, date). Enter or focus leaving the group saves; Escape cancels.
